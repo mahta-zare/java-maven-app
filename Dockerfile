@@ -1,4 +1,4 @@
-FROM openjdk:26
+FROM openjdk:26-ea-oracle
 
 EXPOSE 8080
 
