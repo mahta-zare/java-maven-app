@@ -32,6 +32,8 @@ pipeline {
                 script {
                     // gv.buildImage()
                     buildImage "mahtazare/test_repo:jma-3.0"
+                    dockerLogin()
+                    dockerPush "mahtazare/test_repo:jma-3.0"
                 }
             }
         }
