@@ -23,12 +23,14 @@ pipeline {
                 }
             }
         }
+    
 
         stage("build jar") {
             steps {
                 script {
                     // gv.buildJar()
                     buildJar()
+                    echo "Build finished!"
                 }
             }
         }
