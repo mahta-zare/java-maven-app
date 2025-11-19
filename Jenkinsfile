@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // gv.buildImage()
-                    buildImage()
+                    buildImage "mahtazare/test_repo:jma-3.0"
                 }
             }
         }
