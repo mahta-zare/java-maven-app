@@ -30,7 +30,9 @@ pipeline {
             
             steps {
                 script {
-                    buildImage 'mahtazare/my-repo:jma-3.0'
+                    buildImage 'mahtazare/my-repo:jma-4.0'
+                    dockerLogin()
+                    dockerPush('mahtazare/my-repo:jma-4.0')
                 }
             }
         }
