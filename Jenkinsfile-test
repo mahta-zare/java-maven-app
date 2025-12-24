@@ -1,14 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
-            steps {
-                script {
-                    echo 'building the application...'
-                }
-            }
-        }
-
         stage('test') {
             steps {
                 script {
@@ -17,10 +9,30 @@ pipeline {
             }
         }
 
+        stage('build') {
+            when {
+                expression {
+                    BRANCH_NAME == 'jenkins-jobs'
+                }
+            }
+            steps {
+                script {
+                    echo 'building the application...'
+                    echo "Executing build for branch ${BRANCH_NAME}"
+                }
+            }
+        }
+
         stage('deploy') {
+            when {
+                expression {
+                    BRANCH_NAME == 'jenkins-jobs'
+                }
+            }
             steps {
                 script {
                     echo 'deploying the application...'
+                    echo "Deploying to branch ${BRANCH_NAME}"
                 }   
             }
         }
