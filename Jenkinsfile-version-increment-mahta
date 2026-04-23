@@ -51,7 +51,7 @@ pipeline {
     stage("commit version update") {
       steps {
         script {
-          withCredentials([usernamePassword(credentialsId: 'github-PAT', usernameVariable: 'USER', passwordVariable: 'TOKEN')]) {
+          withCredentials([usernamePassword(credentialsId: 'github-credentials', usernameVariable: 'USER', passwordVariable: 'TOKEN')]) {
             sh "git remote set-url origin https://${USER}:${TOKEN}@github.com/mahta-zare/java-maven-app.git"
             sh 'git add .'
             sh 'git commit -m "verison bump"'
