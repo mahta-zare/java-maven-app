@@ -34,9 +34,9 @@ pipeline {
         script {
           echo "building docker image..."
           withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                        sh "docker build -t mahtazare/test_repo:$IMAGE_NAME ."
+                        sh "docker build -t mahtazare/demo_app:$IMAGE_NAME ."
                         sh "echo $PASS | docker login -u $USER --password-stdin"
-                        sh "docker push mahtazare/test_repo:$IMAGE_NAME"
+                        sh "docker push mahtazare/demo_app:$IMAGE_NAME"
                     }
         }
       }
@@ -44,7 +44,7 @@ pipeline {
       stage("deploy app") {
         steps {
           script {
-            echo "deployinh application on EC2"
+            echo "deploying application on EC2"
           }
         }
       }
