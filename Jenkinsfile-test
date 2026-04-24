@@ -22,7 +22,6 @@ pipeline {
             steps {
                 script {
                     echo 'deploying the application...'
-                    echo "Deploying to branch ${BRANCH_NAME}"
                     def dockerCMD = 'docker run -p 3000:80 -d mahtazare/demo-app:2.0'
                     sshagent(['ec2-server-key']) {
                         sh "ssh -o StrictHostCheckingHost=no ec2-user@56.112.80.104 ${dockerCMD}"      
